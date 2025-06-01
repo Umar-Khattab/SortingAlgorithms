@@ -58,7 +58,7 @@
             }
             return nums;
         }
-        static void selectionSort(int[] arr)
+        public static int[] selectionSort(int[] arr)
         {
             int n = arr.Length;
 
@@ -77,8 +77,9 @@
                 arr[min_idx] = arr[i];
                 arr[i] = temp;
             }
+            return arr;
         }
-        static void InsertionSort(int[] arr)
+        public static int[] InsertionSort(int[] arr)
         {
             int n = arr.Length;
             for (int i = 1; i < n; ++i)
@@ -97,6 +98,20 @@
                 }
                 arr[j + 1] = key;
             }
+            return arr;
+        }
+        public static int[] MergeSort(int[] arr)
+        {
+            if (arr.Length <= 1)
+                return arr;
+            int mid = arr.Length / 2;
+            int[] left = new int[mid];
+            int[] right = new int[arr.Length - mid];
+            for (int i = 0; i < mid; i++)
+                left[i] = arr[i];
+            for (int i = mid; i < arr.Length; i++)
+                right[i - mid] = arr[i];
+            return Merge(MergeSort(left), MergeSort(right));
         }
     }
 }
