@@ -2,6 +2,11 @@
 {
     internal class Algorithms
     {
+        /// <summary>
+        /// SimpleSort: A basic sorting algorithm that compares each element with every other element
+        /// and swaps them if they are out of order. This results in a sorted array in ascending order.
+        /// Time Complexity: O(n^2) (Quadratic)
+        /// </summary>
         public static int[] SimpleSort(int[] nums)
         {
             int temp;
@@ -19,6 +24,11 @@
             }
             return nums;
         }
+
+        /// <summary>
+        /// ReverseSimpleSort: Similar to SimpleSort, but sorts the array in descending order.
+        /// Time Complexity: O(n^2) (Quadratic)
+        /// </summary>
         public static int[] ReverseSimpleSort(int[] nums)
         {
             int temp;
@@ -36,6 +46,12 @@
             }
             return nums;
         }
+
+        /// <summary>
+        /// BubbleSort: Repeatedly swaps adjacent elements if they are in the wrong order.
+        /// The largest elements "bubble up" to the end of the array.
+        /// Time Complexity: O(n^2) (Quadratic) in the worst case, O(n) in the best case (already sorted).
+        /// </summary>
         public static int[] BubbleSort(int[] nums)
         {
             int t;
@@ -58,27 +74,35 @@
             }
             return nums;
         }
+
+        /// <summary>
+        /// SelectionSort: Selects the smallest element from the unsorted part of the array
+        /// and swaps it with the first element of the unsorted part.
+        /// Time Complexity: O(n^2) (Quadratic)
+        /// </summary>
         public static int[] SelectionSort(int[] arr)
         {
             int n = arr.Length;
 
-            // One by one move boundary of unsorted subarray
             for (int i = 0; i < n - 1; i++)
             {
-                // Find the minimum element in unsorted array
                 int min_idx = i;
                 for (int j = i + 1; j < n; j++)
                     if (arr[j] < arr[min_idx])
                         min_idx = j;
 
-                // Swap the found minimum element with the first
-                // element
                 int temp = arr[min_idx];
                 arr[min_idx] = arr[i];
                 arr[i] = temp;
             }
             return arr;
         }
+
+        /// <summary>
+        /// InsertionSort: Builds the sorted array one element at a time by inserting elements
+        /// into their correct position in the sorted portion of the array.
+        /// Time Complexity: O(n^2) (Quadratic) in the worst case, O(n) in the best case (already sorted).
+        /// </summary>
         public static int[] InsertionSort(int[] arr)
         {
             int n = arr.Length;
@@ -87,10 +111,6 @@
                 int key = arr[i];
                 int j = i - 1;
 
-                // Move elements of arr[0..i-1],
-                // that are greater than key,
-                // to one position ahead of
-                // their current position
                 while (j >= 0 && arr[j] > key)
                 {
                     arr[j + 1] = arr[j];
@@ -100,6 +120,12 @@
             }
             return arr;
         }
+
+        /// <summary>
+        /// MergeSort: A divide-and-conquer algorithm that splits the array into halves,
+        /// recursively sorts each half, and merges them back together.
+        /// Time Complexity: O(n log n) (Logarithmic)
+        /// </summary>
         public static int[] MergeSort(int[] arr)
         {
             if (arr.Length <= 1)
@@ -113,6 +139,8 @@
                 right[i - mid] = arr[i];
             return Merge(MergeSort(left), MergeSort(right));
         }
+
+
 
         // Uncomment the following method if you want to use the recursive MergeSort implementation
         // This method using built-in Array.Copy for better performance
@@ -130,6 +158,14 @@
             return Merge(MergeSort(left), MergeSort(right));
         }
         */
+
+
+
+        /// <summary>
+        /// BucketSort: Distributes elements into buckets based on their value,
+        /// sorts each bucket, and combines them back into a single array.
+        /// Time Complexity: O(n + k) (Linear), where k is the number of buckets.
+        /// </summary>
         public static int[] BucketSort(int[] arr)
         {
             int maxValue = arr[0];
@@ -154,6 +190,12 @@
             }
             return arr;
         }
+
+        /// <summary>
+        /// CountSort: Counts the occurrences of each element and reconstructs the sorted array
+        /// based on the counts.
+        /// Time Complexity: O(n + k) (Linear), where k is the range of input values.
+        /// </summary>
         public static int[] CountSort(int[] arr)
         {
             int maxValue = arr[0];
@@ -178,6 +220,10 @@
             }
             return arr;
         }
+
+        /// <summary>
+        /// Merge: Helper method for MergeSort that merges two sorted arrays into one.
+        /// </summary>
         private static int[] Merge(int[] left, int[] right)
         {
             int[] result = new int[left.Length + right.Length];
