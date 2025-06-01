@@ -2,6 +2,8 @@
 
 This repository contains a collection of sorting algorithms implemented in C#. These algorithms are designed to demonstrate various sorting techniques, including simple sorting, bubble sort, selection sort, insertion sort, merge sort, bucket sort, and count sort.
 
+### Each method has an explaination in xml comment above its implementation 
+
 ## Features
 
 - **SimpleSort**: A basic sorting algorithm that sorts an array in ascending order.
