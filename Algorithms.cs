@@ -113,5 +113,29 @@
                 right[i - mid] = arr[i];
             return Merge(MergeSort(left), MergeSort(right));
         }
+        public static int[] BucketSort(int[] arr)
+        {
+            int maxValue = arr[0];
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i] > maxValue)
+                    maxValue = arr[i];
+            }
+            int[] bucket = new int[maxValue + 1];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                bucket[arr[i]]++;
+            }
+            int index = 0;
+            for (int i = 0; i < bucket.Length; i++)
+            {
+                while (bucket[i] > 0)
+                {
+                    arr[index++] = i;
+                    bucket[i]--;
+                }
+            }
+            return arr;
+        }
     }
 }
