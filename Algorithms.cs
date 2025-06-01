@@ -137,5 +137,29 @@
             }
             return arr;
         }
+        public static int[] CountSort(int[] arr)
+        {
+            int maxValue = arr[0];
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i] > maxValue)
+                    maxValue = arr[i];
+            }
+            int[] count = new int[maxValue + 1];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                count[arr[i]]++;
+            }
+            int index = 0;
+            for (int i = 0; i < count.Length; i++)
+            {
+                while (count[i] > 0)
+                {
+                    arr[index++] = i;
+                    count[i]--;
+                }
+            }
+            return arr;
+        }
     }
 }
